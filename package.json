@@ -1,0 +1,21 @@
+{
+    "name": "myserverlessproject",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "dependencies": {
+        "aws-sdk": "^2.679.0",
+        "uuid": "^8.0.0"
+    },
+    "devDependencies": {},
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": ""
+    },
+    "author": "",
+    "license": "ISC",
+    "homepage": ""
+}

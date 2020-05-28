@@ -6,6 +6,11 @@ provider:
     profile: serverlessUser
     environment:
         tableName: ${self:custom.tableName}
+    iamRoleStatements:
+        - Effect: Allow
+          Action:
+              - dynamodb:*
+          Resource: '*'
 
 custom:
     tableName: my-players-table
@@ -17,6 +22,13 @@ functions:
             - http:
                   path: get-user/{ID}
                   method: GET
+                  cors: true
+    createPlayer:
+        handler: lambdas/endpoints/createPlayer.handler
+        events:
+            - http:
+                  path: create-player
+                  method: POST
                   cors: true
 
 resources:

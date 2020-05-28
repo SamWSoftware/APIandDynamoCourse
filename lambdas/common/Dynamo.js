@@ -19,6 +19,24 @@ const Dynamo = {
 
         return Item;
     },
+    get: async (ID, TableName) => {
+        const params = {
+            TableName,
+            Key: {
+                ID,
+            },
+        };
+
+        const data = await documentClient
+            .get(params)
+            .promise()
+            .catch(error => null);
+
+        if (!data || !data.Item) {
+            return null;
+        }
+        return data.Item;
+    },
 };
 
 module.exports = Dynamo;

@@ -30,6 +30,13 @@ functions:
                   path: create-player
                   method: POST
                   cors: true
+    getPlayer:
+        handler: lambdas/endpoints/getPlayer.handler
+        events:
+            - http:
+                  path: get-player/{ID}
+                  method: GET
+                  cors: true
 
 resources:
     Resources:

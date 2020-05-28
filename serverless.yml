@@ -1,0 +1,15 @@
+service: myserverlessproject
+
+provider:
+    name: aws
+    runtime: nodejs12.x
+    profile: serverlessUser
+
+functions:
+    getUser:
+        handler: lambdas/endpoints/getUser.handler
+        events:
+            - http:
+                  path: get-user/{ID}
+                  method: GET
+                  cors: true

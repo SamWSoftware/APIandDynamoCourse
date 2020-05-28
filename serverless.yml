@@ -4,6 +4,11 @@ provider:
     name: aws
     runtime: nodejs12.x
     profile: serverlessUser
+    environment:
+        tableName: ${self:custom.tableName}
+
+custom:
+    tableName: my-players-table
 
 functions:
     getUser:
@@ -13,3 +18,17 @@ functions:
                   path: get-user/{ID}
                   method: GET
                   cors: true
+
+resources:
+    Resources:
+        myDynamoTable:
+            Type: 'AWS::DynamoDB::Table'
+            Properties:
+                TableName: ${self:custom.tableName}
+                AttributeDefinitions:
+                    - AttributeName: ID
+                      AttributeType: S
+                KeySchema:
+                    - AttributeName: ID
+                      KeyType: HASH
+                BillingMode: PAY_PER_REQUEST
